@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                 '"C:\Program Files\Git\bin\sh.exe" mvn -B -DskipTests clean package'
+                 sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                "C:\Program Files\Git\bin\sh.exe" 'mvn test'
+                sh 'mvn test'
             }
             post {
                 always {
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                "C:\Program Files\Git\bin\sh.exe" './jenkins/scripts/deliver.sh'
+                sh './jenkins/scripts/deliver.sh'
             }
         }
     }
